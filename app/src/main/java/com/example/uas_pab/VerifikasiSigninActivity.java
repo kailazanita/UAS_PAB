@@ -29,23 +29,27 @@ public class VerifikasiSigninActivity extends AppCompatActivity {
         String inputUserID = ambilUserIDPassword.getStringExtra("parInputUserID");
         String inputPassword = ambilUserIDPassword.getStringExtra("parInputPassword");
 
-        if (inputUserID.equals(userID)) {
-            if (inputPassword.equals(password)) {
-                Intent kirimResponBerhasil = new Intent(this, ProfilActivity.class);
-                startActivity(kirimResponBerhasil);
-            }
-            else {
+        if(inputUserID.equals("")) {
+            Intent kirimResponGagal = new Intent();
+            kirimResponGagal.putExtra("parRespon", "User ID dan Password Tidak Boleh Kosong");
+            setResult(RESULT_OK, kirimResponGagal);
+        } else {
+            if (inputUserID.equals(userID)) {
+                if (inputPassword.equals(password)) {
+                    Intent kirimResponBerhasil = new Intent(this, ProfilActivity.class);
+                    startActivity(kirimResponBerhasil);
+                } else {
+                    Intent kirimResponGagal = new Intent();
+                    kirimResponGagal.putExtra("parRespon", "Password Salah");
+                    setResult(RESULT_OK, kirimResponGagal);
+                    finish();
+                }
+            } else {
                 Intent kirimResponGagal = new Intent();
-                kirimResponGagal.putExtra("parRespon", "Password Salah");
+                kirimResponGagal.putExtra("parRespon", "User ID Salah");
                 setResult(RESULT_OK, kirimResponGagal);
                 finish();
             }
-        }
-        else {
-            Intent kirimResponGagal = new Intent();
-            kirimResponGagal.putExtra("parRespon", "User ID Salah");
-            setResult(RESULT_OK, kirimResponGagal);
-            finish();
         }
     }
 }
