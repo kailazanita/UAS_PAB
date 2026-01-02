@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Profil Keahlian"
+        android:text="Profil Pengalaman"
         android:textColor="#3F51B5"
         android:textSize="24sp"
         android:textStyle="bold"
